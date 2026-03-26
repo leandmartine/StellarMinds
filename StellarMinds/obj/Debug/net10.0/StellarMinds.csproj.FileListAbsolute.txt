@@ -1,0 +1,12 @@
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.csproj.AssemblyReference.cache
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.AssemblyInfoInputs.cache
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.AssemblyInfo.cs
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.csproj.CoreCompileInputs.cache
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/bin/Debug/net10.0/StellarMinds.deps.json
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/bin/Debug/net10.0/StellarMinds.dll
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/bin/Debug/net10.0/StellarMinds.pdb
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.dll
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/refint/StellarMinds.dll
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/StellarMinds.pdb
+/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Debug/net10.0/ref/StellarMinds.dll

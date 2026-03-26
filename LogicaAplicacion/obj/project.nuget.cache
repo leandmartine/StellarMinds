@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "UprLuclwWS4=",
+  "success": true,
+  "projectFilePath": "/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/LogicaAplicacion.csproj",
+  "expectedPackageFiles": [
+    "/Users/leandmartine/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.5/microsoft.entityframeworkcore.abstractions.10.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}

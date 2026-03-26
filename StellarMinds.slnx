@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DTOs/DTOs.csproj" />
+  <Project Path="LogicaAccesoDatos/LogicaAccesoDatos.csproj" />
+  <Project Path="LogicaAplicacion/LogicaAplicacion.csproj" />
+  <Project Path="StellarMinds/StellarMinds.csproj" />
+  <Project Path="StellarMindsWeb/StellarMindsWeb.csproj" />
+</Solution>
