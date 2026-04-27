@@ -8,16 +8,16 @@ namespace StellarMinds.ValueObjets;
 [Owned]
 public class Contrasenha : IValidable
 {
-    public string contrasenha { get; private set; }
+    public string Pass { get; private set; }
 
     public Contrasenha(string contrasenha)
     {
-        this.contrasenha = contrasenha;
+        this.Pass = contrasenha;
     }
 
     public void Validar()
     {
-        if (string.IsNullOrEmpty(contrasenha))
+        if (string.IsNullOrEmpty(Pass))
             throw new InvalidContrasenhaException("La contraseña no puede estar vacia");
     }
 }
