@@ -14,7 +14,6 @@ public class UsuarioDTOMapper
             Telefono = usuario.Telefono,
             Mail = usuario.Mail,
             NombreUsuario = usuario.NombreUsuario,
-            Contrasena = usuario.Contrasena,
             rol = usuario.Rol
         };
     }

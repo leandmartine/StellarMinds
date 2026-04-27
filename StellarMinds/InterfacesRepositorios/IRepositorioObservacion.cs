@@ -1,6 +1,6 @@
 namespace StellarMinds.InterfacesRepositorios;
 
-public interface IRepositorioObservatorio
+public interface IRepositorioObservacion
 {
     
 }

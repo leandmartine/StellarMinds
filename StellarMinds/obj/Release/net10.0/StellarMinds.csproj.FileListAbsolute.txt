@@ -10,3 +10,18 @@
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Release/net10.0/refint/StellarMinds.dll
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Release/net10.0/StellarMinds.pdb
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/StellarMinds/obj/Release/net10.0/ref/StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\bin\Release\net10.0\StellarMinds.deps.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\bin\Release\net10.0\StellarMinds.runtimeconfig.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\bin\Release\net10.0\StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\bin\Release\net10.0\StellarMinds.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.AssemblyInfoInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.AssemblyInfo.cs
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.csproj.CoreCompileInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.sourcelink.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\refint\StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\StellarMinds.genruntimeconfig.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\StellarMinds\obj\Release\net10.0\ref\StellarMinds.dll

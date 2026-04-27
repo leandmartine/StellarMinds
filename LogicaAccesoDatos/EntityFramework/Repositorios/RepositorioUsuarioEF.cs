@@ -1,4 +1,5 @@
 using StellarMinds.Entidades;
+using StellarMinds.Excepciones;
 using StellarMinds.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.EntityFramework.Repositorios;
@@ -6,39 +7,49 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios;
 public class RepositorioUsuarioEF : IRepositorioUsuario
 {
     private StellarMindsContext context;
+
     public RepositorioUsuarioEF()
     {
         context = new StellarMindsContext();
     }
-    public void AltaUsuario(Usuario aAgregar)
+
+    public void Alta(Usuario aAgregar)
     {
         aAgregar.Validar();
         context.Usuarios.Add(aAgregar);
         context.SaveChanges();
     }
 
-    public void ActualizarUsuario(Usuario aModificar)
+    public void Modificar(Usuario aModificar)
     {
         throw new NotImplementedException();
     }
 
-    public void BajaUsuario(int aEliminar)
+    public void Baja(int id)
     {
         throw new NotImplementedException();
     }
 
     public IEnumerable<Usuario> FindAll()
     {
-        return context.Usuarios;
+        return context.Usuarios.ToList();
     }
 
     public Usuario FindById(int id)
     {
-        throw new NotImplementedException();
+        Usuario encontrado = context.Usuarios.FirstOrDefault(u => u.Id == id);
+        if (encontrado == null)
+            throw new UsuarioException("Usuario no encontrado");
+        return encontrado;
     }
 
-    public IEnumerable<Usuario> FilterByNombreCompleto(string nombreCompleto)
+    public void LoginUsuario(Usuario aLoguear)
     {
-        throw new NotImplementedException();
+        var usuario = context.Usuarios
+            .FirstOrDefault(u => u.NombreUsuario == aLoguear.NombreUsuario
+                              && u.Contrasena.contrasenha == aLoguear.Contrasena.contrasenha);
+
+        if (usuario == null)
+            throw new UsuarioException("Usuario o contrasena incorrectos");
     }
 }

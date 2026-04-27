@@ -15,3 +15,45 @@
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/obj/Debug/net10.0/refint/LogicaAplicacion.dll
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/obj/Debug/net10.0/LogicaAplicacion.pdb
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/obj/Debug/net10.0/ref/LogicaAplicacion.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.deps.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\DTOs.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\DTOs.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\StellarMinds.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.AssemblyInfoInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.AssemblyInfo.cs
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.csproj.CoreCompileInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.sourcelink.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAp.7CDA08B3.Up2Date
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\refint\LogicaAplicacion.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\ref\LogicaAplicacion.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAccesoDatos.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAccesoDatos.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.csproj.AssemblyReference.cache
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.GeneratedMSBuildEditorConfig.editorconfig
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.AssemblyInfoInputs.cache
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.AssemblyInfo.cs
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.csproj.CoreCompileInputs.cache
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.sourcelink.json
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\refint\LogicaAplicacion.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.deps.json
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.runtimeconfig.json
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAplicacion.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\DTOs.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAccesoDatos.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\StellarMinds.dll
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\DTOs.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\StellarMinds.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\bin\Debug\net10.0\LogicaAccesoDatos.pdb
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAp.7CDA08B3.Up2Date
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\LogicaAplicacion.genruntimeconfig.cache
+D:\bd lm no eliminar\ob\StellarMinds\LogicaAplicacion\obj\Debug\net10.0\ref\LogicaAplicacion.dll

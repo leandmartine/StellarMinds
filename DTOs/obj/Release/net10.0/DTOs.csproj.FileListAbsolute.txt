@@ -13,3 +13,23 @@
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/DTOs/obj/Release/net10.0/refint/DTOs.dll
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/DTOs/obj/Release/net10.0/DTOs.pdb
 /Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/DTOs/obj/Release/net10.0/ref/DTOs.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\DTOs.deps.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\DTOs.runtimeconfig.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\DTOs.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\DTOs.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\LogicaAccesoDatos.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\StellarMinds.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\LogicaAccesoDatos.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\bin\Release\net10.0\StellarMinds.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.AssemblyInfoInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.AssemblyInfo.cs
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.csproj.CoreCompileInputs.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.sourcelink.json
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.csproj.Up2Date
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\refint\DTOs.dll
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.pdb
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\DTOs.genruntimeconfig.cache
+C:\Users\alumnoFI\Downloads\26-03-26\StellarMinds\DTOs\obj\Release\net10.0\ref\DTOs.dll

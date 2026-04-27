@@ -2,10 +2,10 @@ namespace StellarMinds.InterfacesRepositorios;
 
 public interface IRepositorio<T> where T : class
 {
-    public void AltaUsuario(T aAgregar);
-    public void ActualizarUsuario(T aModificar);
-    public void BajaUsuario(int aEliminar);
-    
-    public IEnumerable<T> FindAll();
-    public T FindById(int id);
+    void Alta(T aAgregar);
+    void Modificar(T aModificar);
+    void Baja(int id);
+
+    IEnumerable<T> FindAll();
+    T FindById(int id);
 }

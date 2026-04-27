@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StellarMinds.Excepciones;
+using StellarMinds.Excepciones.ExcepcionesVO;
 using StellarMinds.InterfacesDominio;
 
 namespace StellarMinds.ValueObjets;

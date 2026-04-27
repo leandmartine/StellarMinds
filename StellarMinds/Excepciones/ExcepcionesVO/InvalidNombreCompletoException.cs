@@ -1,4 +1,4 @@
-namespace StellarMinds.Excepciones;
+namespace StellarMinds.Excepciones.ExcepcionesVO;
 
 public class InvalidNombreCompletoException : Exception
 {

@@ -1,0 +1,46 @@
+@model IEnumerable<DTOs.DTOs.EquipoDTO>
+
+@{
+    ViewData["Title"] = "Equipos";
+}
+
+<h1>Equipos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-sm">Nuevo equipo</a>
+</p>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TipoEquipo</td>
+                <td>@item.Marca</td>
+                <td>@item.Modelo</td>
+                <td>@item.Stock</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Edit"    asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete"  asp-route-id="@item.Id" class="text-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

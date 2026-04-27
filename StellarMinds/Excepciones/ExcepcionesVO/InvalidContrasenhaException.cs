@@ -1,6 +1,6 @@
 using StellarMinds.InterfacesDominio;
 
-namespace StellarMinds.Excepciones;
+namespace StellarMinds.Excepciones.ExcepcionesVO;
 
 public class InvalidContrasenhaException : Exception
 {

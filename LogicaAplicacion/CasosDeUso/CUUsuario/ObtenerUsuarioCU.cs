@@ -8,19 +8,24 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario;
 
 public class ObtenerUsuarioCU : IObtenerUsuarios
 {
-    private IRepositorioUsuario repositorioUsuario;
+    private IRepositorioUsuario _repositorioUsuario;
 
     public ObtenerUsuarioCU(IRepositorioUsuario repositorioUsuario)
     {
-        repositorioUsuario = repositorioUsuario;
+        _repositorioUsuario = repositorioUsuario;
     }
 
     public List<UsuarioDTO> ObtenerUsuarios()
     {
         List<UsuarioDTO> aRetornar = new List<UsuarioDTO>();
-        foreach (Usuario usuario in repositorioUsuario.FindAll())
+        if (_repositorioUsuario.FindAll() != null)
         {
-            aRetornar.Add(UsuarioDTOMapper.ToDto(usuario));
+            {
+                foreach (Usuario usuario in _repositorioUsuario.FindAll())
+                {
+                    aRetornar.Add(UsuarioDTOMapper.ToDto(usuario));
+                }
+            }
         }
 
         return aRetornar;

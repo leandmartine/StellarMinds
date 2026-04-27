@@ -1,0 +1,75 @@
+@model DTOs.DTOs.EquipoDTO
+
+@{
+    ViewData["Title"] = "Detalle de equipo";
+}
+
+<h1>Detalle de equipo</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Id</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.TipoEquipo</dd>
+
+    <dt class="col-sm-3">Marca</dt>
+    <dd class="col-sm-9">@Model.Marca</dd>
+
+    <dt class="col-sm-3">Modelo</dt>
+    <dd class="col-sm-9">@Model.Modelo</dd>
+
+    <dt class="col-sm-3">Stock</dt>
+    <dd class="col-sm-9">@Model.Stock</dd>
+
+    @if (Model.TipoEquipo == "TELESCOPIO")
+    {
+        <dt class="col-sm-3">Apertura (mm)</dt>
+        <dd class="col-sm-9">@Model.Apertura</dd>
+
+        <dt class="col-sm-3">Relacion focal</dt>
+        <dd class="col-sm-9">@Model.RelFocal</dd>
+
+        <dt class="col-sm-3">Distancia focal (mm)</dt>
+        <dd class="col-sm-9">@Model.DistanciaFocal</dd>
+
+        <dt class="col-sm-3">Peso (kg)</dt>
+        <dd class="col-sm-9">@Model.Peso</dd>
+    }
+    else if (Model.TipoEquipo == "MONTURA")
+    {
+        <dt class="col-sm-3">Tipo montura</dt>
+        <dd class="col-sm-9">@Model.TipoMontura</dd>
+
+        <dt class="col-sm-3">Carga soportada (kg)</dt>
+        <dd class="col-sm-9">@Model.CargaSoportada</dd>
+
+        <dt class="col-sm-3">Computorizada</dt>
+        <dd class="col-sm-9">@((Model.Computorizado ?? false) ? "Si" : "No")</dd>
+    }
+    else if (Model.TipoEquipo == "CAMARA")
+    {
+        <dt class="col-sm-3">Sensor</dt>
+        <dd class="col-sm-9">@Model.Sensor</dd>
+
+        <dt class="col-sm-3">Resolucion</dt>
+        <dd class="col-sm-9">@Model.Resolucion</dd>
+
+        <dt class="col-sm-3">Pixel (um)</dt>
+        <dd class="col-sm-9">@Model.Pixel</dd>
+    }
+    else if (Model.TipoEquipo == "OCULAR")
+    {
+        <dt class="col-sm-3">Diametro (mm)</dt>
+        <dd class="col-sm-9">@Model.Diametro</dd>
+
+        <dt class="col-sm-3">Angulo de vision (grados)</dt>
+        <dd class="col-sm-9">@Model.Angulo</dd>
+    }
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Volver</a>
+</div>

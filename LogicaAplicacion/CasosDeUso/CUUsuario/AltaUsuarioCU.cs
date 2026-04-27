@@ -8,15 +8,16 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario;
 
 public class AltaUsuarioCU : IAltaUsuario
 {
-    private IRepositorioUsuario repositorioUsuario;
+    private readonly IRepositorioUsuario _repositorioUsuario;
 
     public AltaUsuarioCU(IRepositorioUsuario repositorioUsuario)
     {
-        repositorioUsuario = repositorioUsuario;
+        _repositorioUsuario = repositorioUsuario;
     }
 
     public void AltaUsuario(UsuarioDTO aAgregar)
     {
-        repositorioUsuario.AltaUsuario(UsuarioDTOMapper.FromDto(aAgregar));
+        Usuario usuario = UsuarioDTOMapper.FromDto(aAgregar);
+        _repositorioUsuario.Alta(usuario);
     }
 }

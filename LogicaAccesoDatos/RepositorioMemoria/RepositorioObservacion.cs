@@ -1,6 +1,6 @@
 namespace LogicaAccesoDatos.RepositorioMemoria;
 
-public class RepositorioObservatorio
+public class RepositorioObservacion
 {
     
 }

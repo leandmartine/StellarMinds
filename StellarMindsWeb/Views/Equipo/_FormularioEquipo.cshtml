@@ -1,0 +1,124 @@
+@model StellarMindsWeb.Models.EquipoViewModel
+@using StellarMinds.Entidades.Enums
+
+@* Partial compartido entre Create y Edit. Muestra todos los campos;
+   el bloque de cada subtipo se muestra via CSS segun el TipoEquipo elegido. *@
+
+<input type="hidden" asp-for="Id" />
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+<div class="mb-3">
+    <label asp-for="TipoEquipo" class="form-label"></label>
+    <select asp-for="TipoEquipo" class="form-select" id="selectorTipo">
+        <option value="">-- Seleccionar --</option>
+        <option value="TELESCOPIO">Telescopio</option>
+        <option value="MONTURA">Montura</option>
+        <option value="CAMARA">Camara</option>
+        <option value="OCULAR">Ocular</option>
+    </select>
+    <span asp-validation-for="TipoEquipo" class="text-danger"></span>
+</div>
+
+<h5 class="mt-3">Datos comunes</h5>
+<div class="mb-2">
+    <label asp-for="Marca" class="form-label"></label>
+    <input asp-for="Marca" class="form-control" />
+    <span asp-validation-for="Marca" class="text-danger"></span>
+</div>
+<div class="mb-2">
+    <label asp-for="Modelo" class="form-label"></label>
+    <input asp-for="Modelo" class="form-control" />
+    <span asp-validation-for="Modelo" class="text-danger"></span>
+</div>
+<div class="mb-2">
+    <label asp-for="Stock" class="form-label"></label>
+    <input asp-for="Stock" class="form-control" type="number" />
+    <span asp-validation-for="Stock" class="text-danger"></span>
+</div>
+
+@* Bloque Telescopio *@
+<fieldset class="bloque-tipo border rounded p-3 mt-3" data-tipo="TELESCOPIO">
+    <legend class="w-auto px-2 fs-6">Telescopio</legend>
+    <div class="mb-2">
+        <label asp-for="Apertura" class="form-label"></label>
+        <input asp-for="Apertura" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Apertura" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="RelFocal" class="form-label"></label>
+        <input asp-for="RelFocal" class="form-control" placeholder="f/10" />
+        <span asp-validation-for="RelFocal" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="DistanciaFocal" class="form-label"></label>
+        <input asp-for="DistanciaFocal" class="form-control" type="number" step="any" />
+        <span asp-validation-for="DistanciaFocal" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Peso" class="form-label"></label>
+        <input asp-for="Peso" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Peso" class="text-danger"></span>
+    </div>
+</fieldset>
+
+@* Bloque Montura *@
+<fieldset class="bloque-tipo border rounded p-3 mt-3" data-tipo="MONTURA">
+    <legend class="w-auto px-2 fs-6">Montura</legend>
+    <div class="mb-2">
+        <label asp-for="TipoMontura" class="form-label"></label>
+        <select asp-for="TipoMontura" class="form-select"
+                asp-items="Html.GetEnumSelectList<TipoMontura>()">
+            <option value="">-- Seleccionar --</option>
+        </select>
+        <span asp-validation-for="TipoMontura" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="CargaSoportada" class="form-label"></label>
+        <input asp-for="CargaSoportada" class="form-control" type="number" step="any" />
+        <span asp-validation-for="CargaSoportada" class="text-danger"></span>
+    </div>
+    <div class="form-check mb-2">
+        <input asp-for="Computorizado" class="form-check-input" />
+        <label asp-for="Computorizado" class="form-check-label"></label>
+    </div>
+</fieldset>
+
+@* Bloque Camara *@
+<fieldset class="bloque-tipo border rounded p-3 mt-3" data-tipo="CAMARA">
+    <legend class="w-auto px-2 fs-6">Camara</legend>
+    <div class="mb-2">
+        <label asp-for="Sensor" class="form-label"></label>
+        <input asp-for="Sensor" class="form-control" placeholder="CMOS o CCD" />
+        <span asp-validation-for="Sensor" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Resolucion" class="form-label"></label>
+        <input asp-for="Resolucion" class="form-control" placeholder="3840x2160" />
+        <span asp-validation-for="Resolucion" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Pixel" class="form-label"></label>
+        <input asp-for="Pixel" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Pixel" class="text-danger"></span>
+    </div>
+</fieldset>
+
+@* Bloque Ocular *@
+<fieldset class="bloque-tipo border rounded p-3 mt-3" data-tipo="OCULAR">
+    <legend class="w-auto px-2 fs-6">Ocular</legend>
+    <div class="mb-2">
+        <label asp-for="Diametro" class="form-label"></label>
+        <input asp-for="Diametro" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Diametro" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Angulo" class="form-label"></label>
+        <input asp-for="Angulo" class="form-control" type="number" step="any" />
+        <span asp-validation-for="Angulo" class="text-danger"></span>
+    </div>
+</fieldset>
+
+@* Nota: las partial views no pueden definir @section. Por eso el bloque de
+   validaciones cliente y el JS de toggle se agregan desde Create.cshtml y
+   Edit.cshtml usando su propio @section Scripts. *@
