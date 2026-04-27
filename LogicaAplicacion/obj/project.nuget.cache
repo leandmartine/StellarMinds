@@ -71,7 +71,7 @@
     {
       "code": "NU1901",
       "level": "Warning",
-      "message": "El paquete \"NuGet.Packaging\" 6.12.1 tiene una vulnerabilidad de gravedad baja conocida, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
+      "message": "Package 'NuGet.Packaging' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
       "projectPath": "/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/LogicaAplicacion.csproj",
       "warningLevel": 1,
       "filePath": "/Users/leandmartine/Documents/ORT/3er Semestre/Desarrollo Web asistido por IA/Obligatorio/StellarMinds/LogicaAplicacion/LogicaAplicacion.csproj",
