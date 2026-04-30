@@ -47,7 +47,7 @@ public class RepositorioUsuarioEF : IRepositorioUsuario
     {
         var usuario = context.Usuarios
             .FirstOrDefault(u => u.NombreUsuario == aLoguear.NombreUsuario
-                              && u.Contrasena.contrasenha == aLoguear.Contrasena.contrasenha);
+                              && u.Contrasena.Pass == aLoguear.Contrasena.Pass);
 
         if (usuario == null)
             throw new UsuarioException("Usuario o contrasena incorrectos");

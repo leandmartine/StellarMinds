@@ -50,6 +50,15 @@
                             <a class="nav-link text-dark" asp-controller="Usuario" asp-action="Index">Usuarios</a>
                         </li>
                     }
+                    @if (rolActual == StellarMinds.Enums.RolDeUsuario.COORDINADOR)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Prestamo" asp-action="Create">Nuevo préstamo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Prestamo" asp-action="Devolucion">Devolución</a>
+                        </li>
+                    }
                 </ul>
                 @if (Context.Session.GetString("NombreUsuario") != null)
                 {
