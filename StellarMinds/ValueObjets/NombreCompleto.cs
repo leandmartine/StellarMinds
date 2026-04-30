@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using StellarMinds.Excepciones;
 using StellarMinds.Excepciones.ExcepcionesVO;
+using StellarMinds.InterfacesDominio;
 
 namespace StellarMinds.ValueObjets;
 
 [Owned]
-public class NombreCompleto
+public class NombreCompleto : IValidable
 {
     public string nombreCompleto { get; private set; }
 

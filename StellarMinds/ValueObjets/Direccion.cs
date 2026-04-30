@@ -1,18 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using StellarMinds.Excepciones;
 using StellarMinds.Excepciones.ExcepcionesVO;
+using StellarMinds.InterfacesDominio;
 
 namespace StellarMinds.ValueObjets;
 
 [Owned]
-public class Direccion
+public class Direccion : IValidable
 {
-    public string Calle { get; set; }
-    public int Numero { get; set; }
-    public int Apartamento { get; set; }
-    public string Esquina { get; set; }
-    public string Departamento { get; set; }
-    public string Pais { get; set; }
+    public string Calle { get; private set; }
+    public int Numero { get; private set; }
+    public int Apartamento { get; private set; }
+    public string Esquina { get; private set; }
+    public string Departamento { get; private set; }
+    public string Pais { get; private set; }
     
     public Direccion(string calle, int numero, int apartamento, string esquina, string departamento, string pais)
     {

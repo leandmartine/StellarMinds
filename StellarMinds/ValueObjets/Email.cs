@@ -8,16 +8,16 @@ namespace StellarMinds.ValueObjets;
 [Owned]
 public class Email : IValidable
 {
-    public string mail { get; private set; }
+    public string Mail { get; private set; }
 
     public Email(string mail)
     {
-        this.mail = mail;
+        this.Mail = mail;
     }
 
     public void Validar()
     {
-        if (string.IsNullOrEmpty(mail))
+        if (string.IsNullOrEmpty(Mail))
             throw new InvalidEmailException("El email no puede estar vacio");
     }
 }
