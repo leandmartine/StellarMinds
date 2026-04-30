@@ -1,0 +1,119 @@
+@model StellarMindsWeb.Models.DevolucionViewModel
+
+@{
+    ViewData["Title"] = "Devolución de préstamo";
+}
+
+<h1>Devolución de préstamo</h1>
+<hr />
+
+@* Éxito o error de la operación anterior *@
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Exito"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@* --- Paso 1: Selección de socio --- *@
+<div class="card mb-4">
+    <div class="card-header fw-bold">Paso 1 — Seleccionar socio</div>
+    <div class="card-body">
+        <form asp-action="Devolucion" method="post">
+            @Html.AntiForgeryToken()
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <label class="form-label">Socio que devuelve</label>
+                    <select name="SocioSeleccionadoId" class="form-select">
+                        <option value="0">-- Seleccione un socio --</option>
+                        @foreach (var socio in Model.Socios)
+                        {
+                            if (socio.Id == Model.SocioSeleccionadoId)
+                            {
+                                <option value="@socio.Id" selected>@socio.NombreCompleto.nombreCompleto (@socio.NombreUsuario)</option>
+                            }
+                            else
+                            {
+                                <option value="@socio.Id">@socio.NombreCompleto.nombreCompleto (@socio.NombreUsuario)</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3 mt-2 mt-md-0">
+                    <button type="submit" class="btn btn-primary w-100">Ver préstamos activos</button>
+                </div>
+            </div>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger mt-2">@ViewBag.Error</div>
+            }
+        </form>
+    </div>
+</div>
+
+@* --- Paso 2: Lista de préstamos activos (aparece después de elegir socio) --- *@
+@if (Model.SocioSeleccionadoId > 0)
+{
+    <div class="card">
+        <div class="card-header fw-bold">Paso 2 — Seleccionar préstamo a devolver</div>
+        <div class="card-body">
+            @if (ViewBag.Info != null)
+            {
+                <div class="alert alert-info">@ViewBag.Info</div>
+            }
+            else if (Model.PrestamosActivos.Any())
+            {
+                <table class="table table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha fin</th>
+                            <th>Telescopio</th>
+                            <th>Montura</th>
+                            <th>Cámara</th>
+                            <th>Ocular</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.PrestamosActivos)
+                        {
+                            <tr>
+                                <td>@p.Id</td>
+                                <td>@p.FechaInicio.ToShortDateString()</td>
+                                <td>@p.FechaFin.ToShortDateString()</td>
+                                <td>@p.TelescopioDescripcion</td>
+                                <td>@p.MonturaDescripcion</td>
+                                <td>@(p.CamaraDescripcion ?? "—")</td>
+                                <td>@(p.OcularDescripcion ?? "—")</td>
+                                <td>
+                                    @*
+                                        El formulario de confirmación envía solo el prestamoId.
+                                        El coordinadorId lo toma el controller desde la sesión (RF06).
+                                    *@
+                                    <form asp-action="ConfirmarDevolucion" method="post" style="display:inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="prestamoId" value="@p.Id" />
+                                        <button type="submit" class="btn btn-warning btn-sm"
+                                                onclick="return confirm('¿Confirmar devolución del préstamo #@p.Id?')">
+                                            Devolver
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+}

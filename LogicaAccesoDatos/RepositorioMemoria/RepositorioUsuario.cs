@@ -32,7 +32,7 @@ public class RepositorioUsuario : IRepositorioUsuario
         // LINQ basico: busca el primero que matchee usuario + contrasenha.
         bool encontrado = Usuarios.Any(u =>
             u.NombreUsuario == aLoguear.NombreUsuario &&
-            u.Contrasena.contrasenha == aLoguear.Contrasena.contrasenha);
+            u.Contrasena.Pass == aLoguear.Contrasena.Pass);
 
         if (!encontrado)
             throw new UsuarioException("Usuario o contrasena incorrectos");
