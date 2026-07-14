@@ -1,0 +1,92 @@
+@model StellarMindsMVC.Models.MisPrestamosViewModel
+
+@{
+    ViewData["Title"] = "Mis préstamos";
+}
+
+<h1>Mis préstamos</h1>
+<hr />
+
+<div class="row mb-4">
+    <div class="col-md-5">
+        <form asp-action="MisPrestamos" method="post">
+            <div class="row g-2 align-items-end">
+                <div class="col">
+                    <label asp-for="Mes" class="form-label"></label>
+                    <input asp-for="Mes" type="number" min="1" max="12" class="form-control" />
+                    <span asp-validation-for="Mes" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="Anio" class="form-label"></label>
+                    <input asp-for="Anio" type="number" min="2020" max="2099" class="form-control" />
+                    <span asp-validation-for="Anio" class="text-danger"></span>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@if (Model.Buscado)
+{
+    if (!Model.Prestamos.Any())
+    {
+        <div class="alert alert-info">No se encontraron préstamos para ese período.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Telescopio</th>
+                    <th>Montura</th>
+                    <th>Cámara</th>
+                    <th>Ocular</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (StellarMindsMVC.Models.PrestamoModel p in Model.Prestamos)
+                {
+                    <tr class="@(p.Atrasado ? "table-danger" : "")">
+                        <td>@p.Id</td>
+                        <td>@p.TelescopioNombre</td>
+                        <td>@p.MonturaNombre</td>
+                        <td>@(p.CamaraNombre ?? "-")</td>
+                        <td>@(p.OcularNombre ?? "-")</td>
+                        <td>@p.FechaInicio.ToString("dd/MM/yyyy")</td>
+                        <td>@p.FechaFin.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            @if (p.Atrasado)
+                            {
+                                <span class="badge bg-danger">ATRASADO</span>
+                            }
+                            else if (p.Estado == StellarMindsMVC.Models.EstadoPrestamo.PRESTAMO)
+                            {
+                                <span class="badge bg-success">EN PRÉSTAMO</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">DEVUELTO</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
