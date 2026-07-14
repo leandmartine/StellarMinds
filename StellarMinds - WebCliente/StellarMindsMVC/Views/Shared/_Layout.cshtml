@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - StellarMinds</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/StellarMindsMVC.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">StellarMinds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                @{
+                    // El rol se lee de la sesión guardado al hacer login.
+                    // No requiere llamada a la API: se almacenó como string al autenticar.
+                    StellarMindsMVC.Models.RolDeUsuario? rolActual = null;
+                    string? rolStr = Context.Session.GetString("Rol");
+                    if (!string.IsNullOrEmpty(rolStr) &&
+                        Enum.TryParse<StellarMindsMVC.Models.RolDeUsuario>(rolStr, out StellarMindsMVC.Models.RolDeUsuario parsedRol))
+                        rolActual = parsedRol;
+                }
+
+                <ul class="navbar-nav flex-grow-1 gap-1">
+
+                    @* ── ADMINISTRADOR ─────────────────────────────────────────────── *@
+                    @if (rolActual == StellarMindsMVC.Models.RolDeUsuario.ADMINISTRADOR)
+                    {
+                        @* Dropdown: Usuarios (RF02) *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Usuarios
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Index">Listar usuarios</a></li>
+                                <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Create">Nuevo usuario</a></li>
+                            </ul>
+                        </li>
+
+                        @* Dropdown: Equipos (RF03) *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Equipos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Index">Listar equipos</a></li>
+                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Create">Nuevo equipo</a></li>
+                            </ul>
+                        </li>
+
+                        @* Dropdown: Prestamos *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Prestamos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Prestamo" asp-action="SociosPorTelescopio">Socios por telescopio</a></li>
+                            </ul>
+                        </li>
+
+                        @* Auditoria — RF11 solo Administrador *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auditoria" asp-action="Index">Auditoria</a>
+                        </li>
+
+                        @* Ranking — RF10 todos los roles *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ObjetoCeleste" asp-action="Ranking">Ranking celeste</a>
+                        </li>
+                    }
+
+                    @* ── COORDINADOR ───────────────────────────────────────────────── *@
+                    @if (rolActual == StellarMindsMVC.Models.RolDeUsuario.COORDINADOR)
+                    {
+                        @* Dropdown: Prestamos (RF04, RF05, RF09) *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Prestamos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Prestamo" asp-action="Create">Nuevo prestamo</a></li>
+                                <li><a class="dropdown-item" asp-controller="Prestamo" asp-action="Devolucion">Registrar devolucion</a></li>
+                                <li><hr class="dropdown-divider"/></li>
+                                <li><a class="dropdown-item" asp-controller="Prestamo" asp-action="SociosPorTelescopio">Socios por telescopio</a></li>
+                            </ul>
+                        </li>
+
+                        @* Ranking — RF10 todos los roles *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ObjetoCeleste" asp-action="Ranking">Ranking celeste</a>
+                        </li>
+                    }
+
+                    @* ── SOCIO ─────────────────────────────────────────────────────── *@
+                    @if (rolActual == StellarMindsMVC.Models.RolDeUsuario.SOCIO)
+                    {
+                        @* Dropdown: Actividades del socio (RF07, RF08) *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Mis actividades
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Observacion" asp-action="Create">Nueva observacion</a></li>
+                                <li><a class="dropdown-item" asp-controller="Prestamo" asp-action="MisPrestamos">Mis prestamos</a></li>
+                            </ul>
+                        </li>
+
+                        @* Ranking — RF10 todos los roles *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ObjetoCeleste" asp-action="Ranking">Ranking celeste</a>
+                        </li>
+                    }
+
+                </ul>
+
+                @* Sección derecha: usuario logueado o accesos de autenticacion *@
+                @if (Context.Session.GetString("NombreUsuario") != null)
+                {
+                    <ul class="navbar-nav ms-auto align-items-center gap-2">
+                        @* Badge que muestra el rol del usuario activo *@
+                        <li class="nav-item">
+                            <span class="badge bg-secondary">
+                                @{
+                                    string rolBadge = rolActual?.ToString() switch
+                                    {
+                                        "ADMINISTRADOR" => "Administrador",
+                                        "COORDINADOR"   => "Coordinador",
+                                        "SOCIO"         => "Socio",
+                                        _               => rolActual?.ToString() ?? ""
+                                    };
+                                }
+                                @rolBadge
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link text-light fw-bold">
+                                @Context.Session.GetString("NombreUsuario")
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-danger btn-sm" asp-controller="Usuario" asp-action="Logout">
+                                Cerrar sesion
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    @* Sin sesion: accesos de login y registro *@
+                    <ul class="navbar-nav ms-auto gap-2">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light btn-sm" asp-controller="Usuario" asp-action="Login">
+                                Iniciar sesion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light btn-sm" asp-controller="Usuario" asp-action="Create">
+                                Registrarse
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    @* Alertas globales provenientes de TempData (errores y confirmaciones de controladores) *@
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Exito"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Exito"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted py-2 bg-light">
+    <div class="container text-center small">
+        StellarMinds &copy; 2026 — Sistema de gestion de equipos astronomicos
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
