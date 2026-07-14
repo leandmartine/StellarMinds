@@ -1,0 +1,71 @@
+@* RF10 - Ranking de objetos celestes. Accesible para cualquier rol autenticado.
+   Modelo: IEnumerable<RankingObjetoCelesteModel> recibido desde ObjetoCelesteController.Ranking().
+   Los objetos vienen ordenados de mayor a menor por CantidadObservaciones desde la API. *@
+@model IEnumerable<StellarMindsMVC.Models.RankingObjetoCelesteModel>
+
+@{
+    ViewData["Title"] = "Ranking de objetos celestes";
+}
+
+<h1>Ranking de objetos celestes</h1>
+<p class="text-muted">Objetos observados por los socios, ordenados de mayor a menor cantidad de observaciones.</p>
+
+@* Mensaje de error si la API no respondio correctamente *@
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@* Si no hay objetos observados, se informa al usuario (RF10: los nunca observados no aparecen) *@
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay objetos celestes observados registrados aun.</div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Posicion</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int posicion = 1;
+            }
+            @foreach (StellarMindsMVC.Models.RankingObjetoCelesteModel item in Model)
+            {
+                <tr>
+                    <td><strong>@posicion</strong></td>
+                    <td>@item.Nombre</td>
+                    <td>
+                        @* Badge de color segun el tipo del objeto celeste *@
+                        @switch (item.Tipo)
+                        {
+                            case StellarMindsMVC.Models.TipoObjetoCeleste.PLANETA:
+                                <span class="badge bg-primary">Planeta</span>
+                                break;
+                            case StellarMindsMVC.Models.TipoObjetoCeleste.GALAXIA:
+                                <span class="badge bg-warning text-dark">Galaxia</span>
+                                break;
+                            case StellarMindsMVC.Models.TipoObjetoCeleste.NEBULOSA:
+                                <span class="badge bg-success">Nebulosa</span>
+                                break;
+                            case StellarMindsMVC.Models.TipoObjetoCeleste.ESTRELLA:
+                                <span class="badge bg-secondary">Estrella</span>
+                                break;
+                        }
+                    </td>
+                    <td>
+                        <span class="fw-bold text-primary">@item.CantidadObservaciones</span>
+                        @(item.CantidadObservaciones == 1 ? " observacion" : " observaciones")
+                    </td>
+                </tr>
+                posicion++;
+            }
+        </tbody>
+    </table>
+}

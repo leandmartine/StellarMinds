@@ -1,0 +1,62 @@
+@model StellarMindsMVC.Models.SociosPorTelescopioViewModel
+
+@{
+    ViewData["Title"] = "Socios por telescopio";
+}
+
+<h1>Socios por telescopio</h1>
+<hr />
+
+<div class="row mb-4">
+    <div class="col-md-5">
+        <form asp-action="SociosPorTelescopio" method="post">
+            <div class="row g-2 align-items-end">
+                <div class="col">
+                    <label for="TelescopioId" class="form-label">Telescopio</label>
+                    <select asp-for="TelescopioId" asp-items="Model.Telescopios" class="form-select">
+                        <option value="0">-- Seleccione un telescopio --</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@if (Model.Buscado)
+{
+    if (!Model.Socios.Any())
+    {
+        <div class="alert alert-info">Ningún socio ha tenido este telescopio en préstamo.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre completo</th>
+                    <th>Usuario</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (StellarMindsMVC.Models.UsuarioResumenModel s in Model.Socios)
+                {
+                    <tr>
+                        <td>@s.NombreCompleto</td>
+                        <td>@s.NombreUsuario</td>
+                        <td>@s.Telefono</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p class="text-muted"><small>Ordenados por nombre descendente.</small></p>
+    }
+}

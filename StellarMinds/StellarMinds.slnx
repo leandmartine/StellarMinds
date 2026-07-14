@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="DTOs/DTOs.csproj" />
+  <Project Path="Excepciones/Excepciones.csproj" Id="d23a4078-b793-4b53-8a0a-2e4bf50cd989" />
+  <Project Path="LogicaAccesoDatos/LogicaAccesoDatos.csproj" />
+  <Project Path="LogicaAplicacion/LogicaAplicacion.csproj" />
+  <Project Path="StellarMinds/StellarMinds.csproj" />
+  <Project Path="StellarMindsWebAPI/StellarMindsWebAPI.csproj" Id="3f30fde1-ebf7-44b4-b169-9b22472d81b7" />
+</Solution>

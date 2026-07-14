@@ -1,0 +1,67 @@
+@* RF11 - Detalle del préstamo asociado a un registro de auditoría. Solo Administrador.
+   Modelo: PrestamoModel (reutilizado directamente, sin ViewModel extra).
+   Se accede desde el link "Ver préstamo" en la vista de auditoría. *@
+@model StellarMindsMVC.Models.PrestamoModel
+
+@{
+    ViewData["Title"] = $"Detalle del préstamo #{Model.Id}";
+}
+
+<h1>Detalle del préstamo #@Model.Id</h1>
+
+@* Aviso visual si el préstamo está vencido y aún no fue devuelto *@
+@if (Model.Atrasado)
+{
+    <div class="alert alert-danger">
+        Este prestamo esta <strong>atrasado</strong>: vencio el @Model.FechaFin.ToString("dd/MM/yyyy") y aun no fue devuelto.
+    </div>
+}
+
+<div class="card mb-4">
+    <div class="card-header fw-bold">Información general</div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Estado</dt>
+            <dd class="col-sm-9">
+                @if (Model.Estado == StellarMindsMVC.Models.EstadoPrestamo.PRESTAMO)
+                {
+                    <span class="badge bg-warning text-dark">En préstamo</span>
+                }
+                else
+                {
+                    <span class="badge bg-success">Devuelto</span>
+                }
+            </dd>
+
+            <dt class="col-sm-3">Socio</dt>
+            <dd class="col-sm-9">@Model.SocioNombre</dd>
+
+            <dt class="col-sm-3">Fecha de inicio</dt>
+            <dd class="col-sm-9">@Model.FechaInicio.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Fecha de fin</dt>
+            <dd class="col-sm-9">@Model.FechaFin.ToString("dd/MM/yyyy")</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header fw-bold">Equipos prestados</div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Telescopio</dt>
+            <dd class="col-sm-9">@Model.TelescopioNombre</dd>
+
+            <dt class="col-sm-3">Montura</dt>
+            <dd class="col-sm-9">@Model.MonturaNombre</dd>
+
+            <dt class="col-sm-3">Cámara</dt>
+            <dd class="col-sm-9">@(Model.CamaraNombre ?? "No incluida")</dd>
+
+            <dt class="col-sm-3">Ocular</dt>
+            <dd class="col-sm-9">@(Model.OcularNombre ?? "No incluido")</dd>
+        </dl>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">← Volver a auditoría</a>

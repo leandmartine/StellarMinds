@@ -1,4 +1,4 @@
-﻿namespace StellarMinds.Excepciones;
+namespace StellarMinds.Excepciones;
 
 public class ObjetoCelesteException : Exception
 {

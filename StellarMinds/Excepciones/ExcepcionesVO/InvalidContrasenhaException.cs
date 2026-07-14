@@ -1,4 +1,3 @@
-using StellarMinds.InterfacesDominio;
 
 namespace StellarMinds.Excepciones.ExcepcionesVO;
 
