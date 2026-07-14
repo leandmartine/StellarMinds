@@ -8,11 +8,16 @@ Sistema web para la gestión de un observatorio astronómico: usuarios, equipos,
 
 | Componente | URL |
 |---|---|
-| **Frontend (MVC)** | http://stellarmindsfrontend.somee.com/ |
+| **Frontend (MVC)** | http://frontstellarminds.somee.com/ |
 | **API REST** | http://stellarmindsobg.somee.com/ |
 | **Base de datos** | `StellarMindsBD.mssql.somee.com` (SQL Server en Somee) |
 
 La aplicación desplegada en Somee utiliza la base de datos y la API alojadas en el mismo proveedor. No es necesario levantar servicios locales para probar la versión publicada.
+
+### Si las URLs de Somee no responden
+
+El plan free de Somee puede dejar de servir el sitio por **inactividad**, mantenimiento del proveedor u otros límites del servicio.  
+Si **no podés acceder** al frontend, a la API o a la base remota, **ejecutá el setup local** de este README (sección [Ejecución 100% local](#ejecución-100-local)). Ahí tenés todo lo necesario para correr el proyecto de forma autónoma en tu máquina.
 
 ## Contenidos del proyecto
 
@@ -31,7 +36,7 @@ Este repositorio integra los contenidos trabajados en la materia:
 ```
 StellarMinds/                  → Backend (.NET 10): dominio, lógica, EF Core, Web API
 StellarMinds - WebCliente/     → Frontend MVC (.NET 10): consume la API REST
-StellarMinds.sql               → Script de creación de la base de datos
+StellarMinds.sql               → Script de datos / seed de la base de datos
 ```
 
 ### Capas del backend
@@ -45,47 +50,142 @@ StellarMinds.sql               → Script de creación de la base de datos
 | `DTOs` | Objetos de transferencia y mappers |
 | `StellarMindsWebAPI` | API REST con JWT, Swagger y servicio Gemini |
 
-## Requisitos para ejecución local
+## Requisitos
 
-- [.NET SDK 10](https://dotnet.microsoft.com/download) (ver `StellarMinds/global.json`)
-- SQL Server o acceso a la base en Somee
-- API Key de Google Gemini (para la funcionalidad de evaluación con IA)
+- [.NET SDK 10](https://dotnet.microsoft.com/download) (ver `StellarMinds/global.json`; se recomienda roll-forward a un patch reciente)
+- **SQL Server** local (SQL Server Express, Developer o **LocalDB**) — para modo 100% local
+- API Key de [Google Gemini](https://aistudio.google.com/apikey) (solo necesaria para la evaluación con IA en observaciones; el resto del sistema funciona sin ella)
+- (Opcional) Cliente SQL: Azure Data Studio, SSMS o `sqlcmd`
 
-## Ejecución local
+---
 
-### 1. Base de datos
+## Ejecución 100% local
 
-Opción A — usar la base en Somee (recomendado para pruebas rápidas):
+Esta es la forma de correr **todo el stack en tu máquina** (SQL + API + frontend), sin depender de Somee. Usala siempre que las demos remotas fallen o para desarrollo.
 
-Configurar la cadena de conexión en `StellarMinds/StellarMindsWebAPI/appsettings.json`.
+### Resumen de puertos
 
-Opción B — base local:
+| Servicio | URL local |
+|---|---|
+| API REST | http://localhost:5280 |
+| Swagger | http://localhost:5280/swagger |
+| Frontend MVC | http://localhost:64796 |
 
-Ejecutar el script `StellarMinds.sql` en SQL Server y apuntar `DefaultConnection` a esa instancia.
+Orden: **1) base de datos → 2) API → 3) frontend**.
 
-### 2. API REST
+### Paso 1 — Crear y cargar la base de datos local
+
+1. Asegurate de tener SQL Server o LocalDB en ejecución.
+2. Creá la base (si no existe):
+
+```sql
+CREATE DATABASE StellarMinds;
+```
+
+3. Generá el esquema con EF Core (desde la carpeta del backend):
 
 ```bash
 cd StellarMinds/StellarMindsWebAPI
 dotnet restore
-dotnet run
+dotnet tool install --global dotnet-ef   # solo la primera vez
+dotnet ef database update --project ../LogicaAccesoDatos --startup-project .
 ```
 
-La API queda disponible en `http://localhost:5280`. Swagger: `http://localhost:5280/swagger`.
+> Si `dotnet ef` no encuentra el comando, cerrá y reabrí la terminal o usá  
+> `dotnet tool run dotnet-ef` según tu instalación.
 
-Configurar en `appsettings.json`:
+4. Cargá los datos de prueba ejecutando el script **`StellarMinds.sql`** (en la raíz del repo) contra la base `StellarMinds`  
+   (en Azure Data Studio / SSMS: abrir el archivo y ejecutar; el script hace `USE StellarMinds` e inserta usuarios, equipos, etc.).
+
+**Cadenas de conexión de ejemplo** (elegí la que coincida con tu instalación):
+
+```text
+# LocalDB (común en Windows / VS)
+Server=(localdb)\mssqllocaldb;Database=StellarMinds;Trusted_Connection=True;TrustServerCertificate=True
+
+# SQL Server Express local
+Server=localhost\SQLEXPRESS;Database=StellarMinds;Trusted_Connection=True;TrustServerCertificate=True
+
+# SQL Server con usuario/clave
+Server=localhost,1433;Database=StellarMinds;User Id=sa;Password=TU_PASSWORD;TrustServerCertificate=True
+```
+
+### Paso 2 — Configurar la API (modificaciones en appsettings)
+
+Archivo: `StellarMinds/StellarMindsWebAPI/appsettings.json`
+
+Reemplazá los placeholders por valores locales reales:
 
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "<cadena de conexión>"
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
   },
-  "GeminiApiKey": "<tu API key de Gemini>",
-  "SecretTokenKey": "<clave secreta para JWT>"
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=StellarMinds;Trusted_Connection=True;TrustServerCertificate=True"
+  },
+  "GeminiApiKey": "TU_API_KEY_DE_GEMINI",
+  "SecretTokenKey": "ClaveSecretaLocalDev_Minimo32Caracteres!!"
 }
 ```
 
-### 3. Cliente MVC
+| Clave | Qué poner en local |
+|---|---|
+| `DefaultConnection` | Cadena a **tu** SQL Server local (ver ejemplos arriba) |
+| `GeminiApiKey` | Key de Gemini; si no tenés, el resto del sistema sigue andando (falla solo la evaluación IA) |
+| `SecretTokenKey` | Cualquier string **largo y secreto** para firmar JWT (no uses el placeholder de producción) |
+
+> Tip: podés dejar el `appsettings.json` de demo/Somee y crear `appsettings.Development.json` con estos valores; en `Development` ASP.NET Core los combina y pisan los de base.  
+> Con `dotnet run` el perfil por defecto ya usa `ASPNETCORE_ENVIRONMENT=Development`.
+
+### Paso 3 — Levantar la API
+
+```bash
+cd StellarMinds/StellarMindsWebAPI
+dotnet restore
+dotnet run --launch-profile http
+```
+
+Verificá:
+
+- http://localhost:5280/swagger  
+- Si Swagger abre, la API está lista.
+
+Dejá esta terminal abierta.
+
+### Paso 4 — Configurar el frontend (modificación clave)
+
+Archivo: `StellarMinds - WebCliente/StellarMindsMVC/appsettings.json`
+
+Para modo **100% local**, la URL de la API debe apuntar a tu máquina (no a Somee):
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ApiBaseUrl": "http://localhost:5280/"
+}
+```
+
+| Valor de `ApiBaseUrl` | Cuándo usarlo |
+|---|---|
+| `http://localhost:5280/` | **Local completo** (API en tu PC) |
+| `http://stellarmindsobg.somee.com/` | Frontend local consumiendo la API de Somee (si la API remota responde) |
+
+La barra final `/` es importante.
+
+### Paso 5 — Levantar el frontend MVC
+
+En **otra terminal**:
 
 ```bash
 cd "StellarMinds - WebCliente/StellarMindsMVC"
@@ -93,19 +193,53 @@ dotnet restore
 dotnet run
 ```
 
-Verificar que `appsettings.json` apunte a la API:
+Abrí el navegador en:
 
-```json
-{
-  "ApiBaseUrl": "http://localhost:5280/"
-}
+- **Landing / inicio:** http://localhost:64796/  
+- **Login:** http://localhost:64796/Usuario/Login  
+
+Si el perfil lanza HTTPS y da problemas de certificado, podés forzar solo HTTP:
+
+```bash
+ASPNETCORE_URLS="http://localhost:64796" ASPNETCORE_ENVIRONMENT=Development dotnet run --no-launch-profile
 ```
 
-Para probar contra Somee, usar `"ApiBaseUrl": "http://stellarmindsobg.somee.com/"`.
+### Checklist rápido (local)
+
+- [ ] SQL Server / LocalDB corriendo  
+- [ ] Base `StellarMinds` creada + migraciones + `StellarMinds.sql` ejecutado  
+- [ ] API `appsettings` con `DefaultConnection` y `SecretTokenKey` locales  
+- [ ] API en http://localhost:5280 (Swagger OK)  
+- [ ] MVC `ApiBaseUrl` = `http://localhost:5280/`  
+- [ ] Frontend en http://localhost:64796  
+- [ ] Login con un usuario de prueba (tabla abajo)
+
+### Problemas frecuentes en local
+
+| Síntoma | Qué revisar |
+|---|---|
+| Error de conexión a SQL al arrancar la API | Cadena `DefaultConnection`, instancia LocalDB/Express, que la BD exista |
+| Login falla / 500 en el front | Que la API esté arriba y `ApiBaseUrl` apunte a `http://localhost:5280/` |
+| Gemini / adecuación falla | `GeminiApiKey` vacía o inválida (el resto del CRUD puede seguir OK) |
+| Puerto en uso | Cambiá el puerto en `Properties/launchSettings.json` o con `ASPNETCORE_URLS` |
+| CORS | La API ya permite cualquier origen en desarrollo (`AllowAnyOrigin`) |
+
+---
+
+## Ejecución híbrida (opcional)
+
+Si **solo** Somee frontend falla pero la **API remota** sigue viva:
+
+1. Configurá el MVC local con `"ApiBaseUrl": "http://stellarmindsobg.somee.com/"`.
+2. Corré solo el frontend (`dotnet run` en `StellarMindsMVC`).
+
+Si la API remota también está caída, usá el modo **100% local** de arriba.
+
+---
 
 ## Usuarios de prueba
 
-Usuarios precargados en la base de datos para testear los distintos roles:
+Usuarios precargados en la base de datos (script `StellarMinds.sql`) para testear los distintos roles:
 
 | Rol | Usuario | Contraseña | Descripción |
 |---|---|---|---|
