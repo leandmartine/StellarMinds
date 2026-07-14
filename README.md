@@ -4,6 +4,31 @@ Proyecto final de la materia **Desarrollo Web Asistido con IA** (ORT Uruguay).
 
 Sistema web para la gestión de un observatorio astronómico: usuarios, equipos, préstamos de instrumentación, observaciones y evaluación de adecuación equipo/objeto celeste mediante la API de **Google Gemini**.
 
+## Tabla de contenidos
+
+1. [Demo en Somee](#demo-en-somee)
+   - [Si las URLs de Somee no responden](#si-las-urls-de-somee-no-responden)
+2. [Contenidos del proyecto](#contenidos-del-proyecto)
+3. [Estructura del repositorio](#estructura-del-repositorio)
+4. [Requisitos](#requisitos)
+5. [Ejecución 100% local](#ejecución-100-local)
+   - [Resumen de puertos](#resumen-de-puertos)
+   - [Paso 1 — Base de datos local](#paso-1--crear-y-cargar-la-base-de-datos-local)
+   - [Paso 2 — Configurar la API](#paso-2--configurar-la-api-modificaciones-en-appsettings)
+   - [Paso 3 — Levantar la API](#paso-3--levantar-la-api)
+   - [Paso 4 — Configurar el frontend](#paso-4--configurar-el-frontend-modificación-clave)
+   - [Paso 5 — Levantar el frontend MVC](#paso-5--levantar-el-frontend-mvc)
+   - [Checklist rápido](#checklist-rápido-local)
+   - [Problemas frecuentes](#problemas-frecuentes-en-local)
+6. [Ejecución híbrida (opcional)](#ejecución-híbrida-opcional)
+7. [Usuarios de prueba](#usuarios-de-prueba)
+8. [Endpoints principales de la API](#endpoints-principales-de-la-api)
+9. [Tecnologías](#tecnologías)
+10. [Reflexión y aprendizajes](#reflexión-y-aprendizajes)
+11. [Autor](#autor)
+
+---
+
 ## Demo en Somee
 
 | Componente | URL |
@@ -270,6 +295,18 @@ La autenticación se realiza mediante JWT. Obtener el token con `POST /api/usuar
 - JWT Bearer Authentication
 - Swagger / OpenAPI
 - Google Gemini API
+
+## Reflexión y aprendizajes
+
+A lo largo de este proyecto pude **armar de punta a punta** un sistema web real, no solo pantallas sueltas: dominio, casos de uso, persistencia, API y un cliente MVC que la consume. Eso me ayudó a entender por qué conviene **separar responsabilidades** (capas, interfaces, DTOs) y no mezclar reglas de negocio con la vista o con el acceso a datos.
+
+Trabajar con **ASP.NET Core**, inyección de dependencias y repositorios me hizo más concreto lo que en clase se veía como teoría (SOLID, inversión de control, contratos). Al implementar préstamos, observaciones, roles y auditoría, también vi la importancia de **modelar bien el dominio** (entidades, value objects, validaciones) para que los errores se detecten temprano y el código se mantenga entendible.
+
+La **API REST con JWT** y el cliente separado me enseñaron el flujo completo de autenticación y autorización por rol: el frontend no “adivina” permisos; confía en el token y en lo que el backend permite. Documentar con Swagger y publicar en un host externo (Somee) sumó la parte práctica de **configuración, cadenas de conexión, secretos y despliegue**, que en local a veces se da por sentada.
+
+Integrar **Google Gemini** para evaluar si un equipo es adecuado para un objeto celeste fue un punto de contacto con IA aplicada: no como un chatbot genérico, sino como un servicio del sistema, con límites, fallos posibles y la necesidad de que el resto del CRUD siga funcionando aunque la IA no responda.
+
+En conjunto, el obligatorio me dejó una visión más clara de cómo se construye una aplicación web en capas, cómo se conecta con datos e IA, y qué implica dejarla usable para otra persona (README, usuarios de prueba, setup local y demo online). También reforcé el hábito de **documentar decisiones y caminos alternativos** (por ejemplo, qué hacer si el hosting free se cae), que es parte de entregar un proyecto profesional y no solo “que compile en mi máquina”.
 
 ## Autor
 
