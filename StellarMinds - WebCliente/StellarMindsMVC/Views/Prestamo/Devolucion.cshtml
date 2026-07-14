@@ -4,8 +4,10 @@
     ViewData["Title"] = "Devolución de préstamos";
 }
 
-<h1>Devolución de préstamos</h1>
-<hr />
+<div class="sm-page-header">
+    <h1>Devolución de préstamos</h1>
+    <p class="text-muted">Seleccioná un socio y registrá la devolución de sus préstamos activos.</p>
+</div>
 
 @if (TempData["Error"] != null)
 {
@@ -16,21 +18,23 @@
     <div class="alert alert-danger">@ViewBag.Error</div>
 }
 
-<p>
+<div class="sm-page-actions">
     <a asp-action="Create" class="btn btn-primary">+ Nuevo préstamo</a>
-</p>
+</div>
 
-<form asp-action="Devolucion" method="get" class="row g-2 align-items-end mb-3">
-    <div class="col-md-6">
-        <label asp-for="SocioId" class="form-label">Socio</label>
-        <select asp-for="SocioId" asp-items="Model.Socios" class="form-select">
-            <option value="">-- Seleccione un socio --</option>
-        </select>
-    </div>
-    <div class="col-md-3">
-        <button type="submit" class="btn btn-secondary">Ver préstamos</button>
-    </div>
-</form>
+<div class="sm-card">
+    <form asp-action="Devolucion" method="get" class="row g-2 align-items-end">
+        <div class="col-md-6">
+            <label asp-for="SocioId" class="form-label">Socio</label>
+            <select asp-for="SocioId" asp-items="Model.Socios" class="form-select">
+                <option value="">-- Seleccione un socio --</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-secondary">Ver préstamos</button>
+        </div>
+    </form>
+</div>
 
 @if (Model.Buscado)
 {
@@ -40,53 +44,55 @@
     }
     else
     {
-        <table class="table table-striped table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Socio</th>
-                    <th>Telescopio</th>
-                    <th>Montura</th>
-                    <th>Cámara</th>
-                    <th>Ocular</th>
-                    <th>Inicio</th>
-                    <th>Fin</th>
-                    <th>Estado</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (StellarMindsMVC.Models.PrestamoModel p in Model.PrestamosActivos)
-                {
-                    <tr class="@(p.Atrasado ? "table-danger" : "")">
-                        <td>@p.Id</td>
-                        <td>@p.SocioNombre</td>
-                        <td>@p.TelescopioNombre</td>
-                        <td>@p.MonturaNombre</td>
-                        <td>@(p.CamaraNombre ?? "-")</td>
-                        <td>@(p.OcularNombre ?? "-")</td>
-                        <td>@p.FechaInicio.ToString("dd/MM/yyyy")</td>
-                        <td>@p.FechaFin.ToString("dd/MM/yyyy")</td>
-                        <td>
-                            @if (p.Atrasado)
-                            {
-                                <span class="badge bg-danger">ATRASADO</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-success">EN PRÉSTAMO</span>
-                            }
-                        </td>
-                        <td>
-                            <form asp-action="Devolver" method="post" style="display:inline">
-                                <input type="hidden" name="prestamoId" value="@p.Id" />
-                                <input type="hidden" name="socioId" value="@Model.SocioId" />
-                                <button type="submit" class="btn btn-sm btn-warning">Devolver</button>
-                            </form>
-                        </td>
+        <div class="sm-table-wrap">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Socio</th>
+                        <th>Telescopio</th>
+                        <th>Montura</th>
+                        <th>Cámara</th>
+                        <th>Ocular</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Estado</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (StellarMindsMVC.Models.PrestamoModel p in Model.PrestamosActivos)
+                    {
+                        <tr class="@(p.Atrasado ? "table-danger" : "")">
+                            <td>@p.Id</td>
+                            <td>@p.SocioNombre</td>
+                            <td>@p.TelescopioNombre</td>
+                            <td>@p.MonturaNombre</td>
+                            <td>@(p.CamaraNombre ?? "-")</td>
+                            <td>@(p.OcularNombre ?? "-")</td>
+                            <td>@p.FechaInicio.ToString("dd/MM/yyyy")</td>
+                            <td>@p.FechaFin.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                @if (p.Atrasado)
+                                {
+                                    <span class="badge bg-danger">ATRASADO</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">EN PRÉSTAMO</span>
+                                }
+                            </td>
+                            <td>
+                                <form asp-action="Devolver" method="post" style="display:inline">
+                                    <input type="hidden" name="prestamoId" value="@p.Id" />
+                                    <input type="hidden" name="socioId" value="@Model.SocioId" />
+                                    <button type="submit" class="btn btn-sm btn-warning">Devolver</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 }

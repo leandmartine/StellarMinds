@@ -7,7 +7,10 @@
     ViewData["Title"] = $"Detalle del préstamo #{Model.Id}";
 }
 
-<h1>Detalle del préstamo #@Model.Id</h1>
+<div class="sm-page-header">
+    <h1>Detalle del préstamo #@Model.Id</h1>
+    <p class="text-muted">Información del préstamo asociado a la auditoría.</p>
+</div>
 
 @* Aviso visual si el préstamo está vencido y aún no fue devuelto *@
 @if (Model.Atrasado)
@@ -20,7 +23,7 @@
 <div class="card mb-4">
     <div class="card-header fw-bold">Información general</div>
     <div class="card-body">
-        <dl class="row">
+        <dl class="row mb-0">
             <dt class="col-sm-3">Estado</dt>
             <dd class="col-sm-9">
                 @if (Model.Estado == StellarMindsMVC.Models.EstadoPrestamo.PRESTAMO)
@@ -48,7 +51,7 @@
 <div class="card mb-4">
     <div class="card-header fw-bold">Equipos prestados</div>
     <div class="card-body">
-        <dl class="row">
+        <dl class="row mb-0">
             <dt class="col-sm-3">Telescopio</dt>
             <dd class="col-sm-9">@Model.TelescopioNombre</dd>
 

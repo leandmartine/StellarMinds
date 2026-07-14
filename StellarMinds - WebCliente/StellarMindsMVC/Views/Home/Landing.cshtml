@@ -1,0 +1,529 @@
+@{
+    Layout = "_LandingLayout";
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="stars-layer" aria-hidden="true"></div>
+
+<!-- ── Navbar ──────────────────────────────────────────────── -->
+<nav class="landing-nav" id="landingNav" aria-label="Navegación principal">
+    <div class="nav-inner">
+        <a class="brand" href="#inicio">
+            <span class="brand-orb" aria-hidden="true"></span>
+            StellarMinds
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#funciones">Funciones</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#roles">Roles</a></li>
+            <li><a href="#tecnologia">Tecnología</a></li>
+            <li><a href="#proyecto">Proyecto</a></li>
+            <li><a href="#repositorio">Repositorio</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a class="btn-sm-outline d-none d-sm-inline-flex"
+               asp-controller="Usuario" asp-action="Login">
+                Iniciar sesión
+            </a>
+            <a class="btn-sm-primary"
+               asp-controller="Usuario" asp-action="Login">
+                Entrar al sistema
+            </a>
+            <button type="button" class="nav-toggle" id="navToggle"
+                    aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+    <a href="#funciones">Funciones</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#roles">Roles</a>
+    <a href="#tecnologia">Tecnología</a>
+    <a href="#proyecto">Proyecto</a>
+    <a href="#repositorio">Repositorio</a>
+    <a class="btn-sm-primary" asp-controller="Usuario" asp-action="Login">Iniciar sesión</a>
+</div>
+
+<!-- ── Hero ────────────────────────────────────────────────── -->
+<header class="hero" id="inicio">
+    <div class="hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline poster="@Url.Content("~/img/landing/hero.jpg")">
+            <source src="@Url.Content("~/videos/hero.mp4")" type="video/mp4"/>
+        </video>
+        <img src="@Url.Content("~/img/landing/hero.jpg")" alt="" class="d-none" id="heroFallback"/>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Observatorio digital · ORT Uruguay
+        </div>
+
+        <h1>
+            Gestioná el universo de tu
+            <span class="gradient-text">observatorio</span>
+        </h1>
+
+        <p class="hero-lead">
+            StellarMinds es la plataforma para administrar equipos astronómicos,
+            préstamos, observaciones y evaluar con IA si tu instrumentación es
+            adecuada para cada objeto celeste.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn-sm-primary btn-lg" asp-controller="Usuario" asp-action="Login">
+                Iniciar sesión
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a class="btn-sm-outline btn-lg" href="#funciones">
+                Descubrir funciones
+            </a>
+            <a class="btn-sm-ghost btn-lg" href="#repositorio">
+                Ver repositorio
+            </a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-card">
+                <strong><span data-count="3">0</span></strong>
+                <span>Roles de usuario</span>
+            </div>
+            <div class="stat-card">
+                <strong><span data-count="6">0</span>+</strong>
+                <span>Módulos del sistema</span>
+            </div>
+            <div class="stat-card">
+                <strong>IA</strong>
+                <span>Evaluación con Gemini</span>
+            </div>
+        </div>
+    </div>
+
+    <a class="scroll-hint" href="#funciones" aria-label="Desplazarse a funciones">
+        <span class="mouse"></span>
+        Scroll
+    </a>
+</header>
+
+<!-- ── Features ────────────────────────────────────────────── -->
+<section class="section" id="funciones">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <span class="section-kicker">Funciones</span>
+            <h2>Todo lo que necesita un observatorio moderno</h2>
+            <p>
+                Desde el inventario de telescopios hasta el ranking de objetos celestes:
+                una experiencia clara para administradores, coordinadores y socios.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <article class="feature-card reveal reveal-delay-1">
+                <div class="card-media">
+                    <img src="@Url.Content("~/img/landing/feature-1.jpg")" alt="Espacio profundo y nebulosas" loading="lazy"/>
+                </div>
+                <div class="card-body">
+                    <div class="card-icon" aria-hidden="true">✦</div>
+                    <h3>Objetos celestes y ranking</h3>
+                    <p>
+                        Consultá catálogos y el ranking de objetos más observados.
+                        Ideal para planificar noches de observación.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card reveal reveal-delay-2">
+                <div class="card-media">
+                    <img src="@Url.Content("~/img/landing/feature-3.jpg")" alt="Telescopio profesional" loading="lazy"/>
+                </div>
+                <div class="card-body">
+                    <div class="card-icon" aria-hidden="true">🔭</div>
+                    <h3>Equipos y préstamos</h3>
+                    <p>
+                        Administrá telescopios, monturas, oculares y cámaras.
+                        Registrá préstamos y devoluciones con trazabilidad completa.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card reveal reveal-delay-3">
+                <div class="card-media">
+                    <img src="@Url.Content("~/img/landing/feature-2.jpg")" alt="Panel de análisis astronómico con IA" loading="lazy"/>
+                </div>
+                <div class="card-body">
+                    <div class="card-icon" aria-hidden="true">◈</div>
+                    <h3>IA con Google Gemini</h3>
+                    <p>
+                        Evaluá automáticamente si el equipo es adecuado para el
+                        objeto celeste observado y recibí un indicador de adecuación.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── Showcase ─────────────────────────────────────────────── -->
+<section class="section showcase" id="experiencia">
+    <div class="section-inner">
+        <div class="showcase-grid">
+            <div class="showcase-video-wrap reveal">
+                <div class="glow-ring" aria-hidden="true"></div>
+                <video autoplay muted loop playsinline poster="@Url.Content("~/img/landing/feature-1.jpg")">
+                    <source src="@Url.Content("~/videos/nebula.mp4")" type="video/mp4"/>
+                </video>
+            </div>
+
+            <div class="showcase-copy reveal reveal-delay-2">
+                <span class="section-kicker">Experiencia</span>
+                <h2>Observaciones con inteligencia artificial</h2>
+                <p>
+                    Los socios registran observaciones vinculadas a equipos y objetos celestes.
+                    StellarMinds integra la API de Google Gemini para sugerir qué tan adecuada
+                    es la instrumentación para cada sesión.
+                </p>
+                <ul class="check-list">
+                    <li>
+                        <span class="check" aria-hidden="true">✓</span>
+                        Alta de observaciones con tipo y detalles de la sesión
+                    </li>
+                    <li>
+                        <span class="check" aria-hidden="true">✓</span>
+                        Historial de préstamos por socio y por telescopio
+                    </li>
+                    <li>
+                        <span class="check" aria-hidden="true">✓</span>
+                        Auditoría de operaciones para el administrador
+                    </li>
+                    <li>
+                        <span class="check" aria-hidden="true">✓</span>
+                        Arquitectura en capas, API REST y autenticación JWT
+                    </li>
+                </ul>
+                <a class="btn-sm-primary" asp-controller="Usuario" asp-action="Login">
+                    Acceder ahora
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Roles ────────────────────────────────────────────────── -->
+<section class="section" id="roles">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <span class="section-kicker">Roles</span>
+            <h2>Diseñado para cada perfil del observatorio</h2>
+            <p>
+                Permisos claros según tu rol. Iniciá sesión y el menú se adapta
+                automáticamente a lo que podés hacer.
+            </p>
+        </div>
+
+        <div class="roles-grid">
+            <article class="role-card admin reveal reveal-delay-1">
+                <span class="role-tag">Administrador</span>
+                <h3>Control total</h3>
+                <p>
+                    Gestión de usuarios y equipos, auditoría de préstamos y
+                    consultas globales del sistema.
+                </p>
+            </article>
+            <article class="role-card coord reveal reveal-delay-2">
+                <span class="role-tag">Coordinador</span>
+                <h3>Operación diaria</h3>
+                <p>
+                    Alta de préstamos, devoluciones y seguimiento de socios
+                    por telescopio.
+                </p>
+            </article>
+            <article class="role-card socio reveal reveal-delay-3">
+                <span class="role-tag">Socio</span>
+                <h3>Observar y registrar</h3>
+                <p>
+                    Mis préstamos, nuevas observaciones y ranking de objetos
+                    celestes.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── Tech marquee ─────────────────────────────────────────── -->
+<section class="tech-strip" id="tecnologia" aria-label="Tecnologías">
+    <div class="tech-marquee" aria-hidden="true">
+        <span>ASP.NET Core 10</span>
+        <span>Entity Framework Core</span>
+        <span>API REST + JWT</span>
+        <span>Google Gemini</span>
+        <span>SQL Server</span>
+        <span>Arquitectura en capas</span>
+        <span>SOLID</span>
+        <span>Swagger / OpenAPI</span>
+        <span>ASP.NET Core 10</span>
+        <span>Entity Framework Core</span>
+        <span>API REST + JWT</span>
+        <span>Google Gemini</span>
+        <span>SQL Server</span>
+        <span>Arquitectura en capas</span>
+        <span>SOLID</span>
+        <span>Swagger / OpenAPI</span>
+    </div>
+</section>
+
+<!-- ── Proyecto ─────────────────────────────────────────────── -->
+<section class="section project-section" id="proyecto">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <span class="section-kicker">Proyecto</span>
+            <h2>Sobre StellarMinds</h2>
+            <p>
+                Proyecto final de la materia <strong>Desarrollo Web Asistido con IA</strong>
+                (ORT Uruguay, 3er semestre). Sistema web para la gestión integral de un
+                observatorio astronómico.
+            </p>
+        </div>
+
+        <div class="project-grid">
+            <article class="project-card reveal reveal-delay-1">
+                <h3>Qué resuelve</h3>
+                <p>
+                    Centraliza usuarios, inventario de equipos (telescopios, monturas,
+                    oculares y cámaras), préstamos, observaciones y evaluación de
+                    adecuación equipo/objeto celeste mediante la API de Google Gemini.
+                </p>
+            </article>
+            <article class="project-card reveal reveal-delay-2">
+                <h3>Arquitectura</h3>
+                <p>
+                    Backend en capas con dominio, lógica de aplicación, acceso a datos
+                    (EF Core), DTOs y API REST con JWT. Frontend MVC que consume la API.
+                    Principios SOLID e inversión de dependencias.
+                </p>
+            </article>
+            <article class="project-card reveal reveal-delay-3">
+                <h3>Contenidos de la materia</h3>
+                <ul class="project-list">
+                    <li>CRUD completo sobre los módulos del sistema</li>
+                    <li>Interfaces e inyección de dependencias</li>
+                    <li>Integración con API Key de Gemini</li>
+                    <li>Swagger / OpenAPI y despliegue en Somee</li>
+                </ul>
+            </article>
+            <article class="project-card reveal reveal-delay-4">
+                <h3>Autor y contexto</h3>
+                <p>
+                    Desarrollado por <strong>Leandro Martínez</strong> a lo largo del
+                    primer semestre de 2026. Incluye script SQL, usuarios de prueba y
+                    documentación de ejecución en el repositorio.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── Repositorio (estilo GitHub) ───────────────────────────── -->
+<section class="section repo-section" id="repositorio">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <span class="section-kicker">Código fuente</span>
+            <h2>Repositorio en GitHub</h2>
+            <p>
+                Explorá el código del proyecto como en GitHub: descripción, lenguajes,
+                estructura y enlace directo al repo público.
+            </p>
+        </div>
+
+        <div class="gh-repo-card reveal">
+            <!-- Barra superior tipo GitHub -->
+            <div class="gh-repo-top">
+                <div class="gh-repo-title">
+                    <svg class="gh-icon" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true">
+                        <path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v.5c0 .1.027.2.076.283a2.99 2.99 0 0 1 .9-.133h8v-.65A.25.25 0 0 0 12.5 10Zm-8-7a1 1 0 0 0-1 1v6c0 .1.027.2.076.283A2.99 2.99 0 0 1 4.5 9.5h8v-7h-8Z"/>
+                    </svg>
+                    <div class="gh-repo-name-line">
+                        <a class="gh-owner" href="https://github.com/leandmartine" target="_blank" rel="noopener noreferrer">leandmartine</a>
+                        <span class="gh-sep">/</span>
+                        <a class="gh-name" href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">StellarMinds</a>
+                        <span class="gh-badge">Public</span>
+                    </div>
+                </div>
+                <div class="gh-repo-actions">
+                    <a class="gh-btn" href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+                        Star
+                    </a>
+                    <a class="gh-btn gh-btn-primary" href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+                        Ver en GitHub
+                    </a>
+                </div>
+            </div>
+
+            <p class="gh-description">
+                Repo de proyecto final de entrega para la materia DW. El mismo fue construido
+                a lo largo del primer semestre de 2026.
+            </p>
+
+            <div class="gh-meta-row">
+                <span class="gh-meta-item">
+                    <span class="gh-lang-dot" style="background:#178600"></span>
+                    C#
+                </span>
+                <span class="gh-meta-item">
+                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+                    0 stars
+                </span>
+                <span class="gh-meta-item">
+                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M5 5.372v.878c0 .192.168.1.5.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-10.20.0.5 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>
+                    0 forks
+                </span>
+                <span class="gh-meta-item">
+                    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm9-3a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.92 6.085c.081-.16.19-.29.313-.384.123-.093.263-.16.41-.192.16-.033.327-.033.486 0 .15.032.288.1.41.192a.94.94 0 0 1 .313.384c.10.0.0.5.148.518v2.794c0 .192.168.1.1.52a.94.94 0 0 1-.148.518.94.94 0 0 1-.313.384 1.05 1.05 0 0 1-.41.192c-.16.033-.327.033-.486 0a1.05 1.05 0 0 1-.41-.192.94.94 0 0 1-.313-.384.94.94 0 0 1-.148-.518V6.603c0-.192.05-.376.148-.518Z"/></svg>
+                    0 issues
+                </span>
+                <span class="gh-meta-item">Default branch: <code>master</code></span>
+            </div>
+
+            <!-- Language bar -->
+            <div class="gh-lang-bar" aria-label="Distribución de lenguajes" role="img">
+                <span class="gh-lang-seg" style="width:72%; background:#178600" title="C# 72%"></span>
+                <span class="gh-lang-seg" style="width:22%; background:#e34c26" title="HTML 22%"></span>
+                <span class="gh-lang-seg" style="width:5.6%; background:#e38c00" title="TSQL 5.6%"></span>
+                <span class="gh-lang-seg" style="width:0.4%; background:#563d7c" title="CSS / JS"></span>
+            </div>
+            <ul class="gh-lang-legend">
+                <li><span class="gh-lang-dot" style="background:#178600"></span> C# <em>72%</em></li>
+                <li><span class="gh-lang-dot" style="background:#e34c26"></span> HTML <em>22%</em></li>
+                <li><span class="gh-lang-dot" style="background:#e38c00"></span> TSQL <em>5.6%</em></li>
+                <li><span class="gh-lang-dot" style="background:#563d7c"></span> CSS / JS <em>&lt;1%</em></li>
+            </ul>
+
+            <div class="gh-body-grid">
+                <div class="gh-about">
+                    <h3>About</h3>
+                    <p>
+                        Sistema de gestión de observatorio astronómico: API REST + cliente MVC,
+                        EF Core, JWT y evaluación con Gemini.
+                    </p>
+                    <a class="gh-link" href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0Z"/></svg>
+                        github.com/leandmartine/StellarMinds
+                    </a>
+                    <div class="gh-topics">
+                        <span class="gh-topic">aspnet-core</span>
+                        <span class="gh-topic">mvc</span>
+                        <span class="gh-topic">ef-core</span>
+                        <span class="gh-topic">jwt</span>
+                        <span class="gh-topic">gemini</span>
+                        <span class="gh-topic">sql-server</span>
+                    </div>
+                    <dl class="gh-about-stats">
+                        <div>
+                            <dt>Stars</dt>
+                            <dd>0</dd>
+                        </div>
+                        <div>
+                            <dt>Watching</dt>
+                            <dd>0</dd>
+                        </div>
+                        <div>
+                            <dt>Forks</dt>
+                            <dd>0</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="gh-files">
+                    <div class="gh-files-header">
+                        <span>
+                            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
+                            <code>master</code>
+                        </span>
+                        <span class="gh-commit-hint">Último merge · PR #3 · proyecto final</span>
+                    </div>
+                    <ul class="gh-file-tree">
+                        <li>
+                            <span class="gh-file-icon folder" aria-hidden="true"></span>
+                            <span class="gh-file-name">StellarMinds/</span>
+                            <span class="gh-file-desc">Backend: dominio, lógica, EF Core, Web API</span>
+                        </li>
+                        <li>
+                            <span class="gh-file-icon folder" aria-hidden="true"></span>
+                            <span class="gh-file-name">StellarMinds - WebCliente/</span>
+                            <span class="gh-file-desc">Frontend MVC que consume la API REST</span>
+                        </li>
+                        <li>
+                            <span class="gh-file-icon file" aria-hidden="true"></span>
+                            <span class="gh-file-name">StellarMinds.sql</span>
+                            <span class="gh-file-desc">Script de creación de la base de datos</span>
+                        </li>
+                        <li>
+                            <span class="gh-file-icon file" aria-hidden="true"></span>
+                            <span class="gh-file-name">README.md</span>
+                            <span class="gh-file-desc">Instrucciones de ejecución y demo en Somee</span>
+                        </li>
+                    </ul>
+                    <div class="gh-readme">
+                        <div class="gh-readme-header">
+                            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25ZM3.5 6.25a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm.75 2.25h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1 0-1.5Z"/></svg>
+                            README.md
+                        </div>
+                        <div class="gh-readme-body">
+                            <h4>StellarMinds</h4>
+                            <p>
+                                Proyecto final de <strong>Desarrollo Web Asistido con IA</strong> (ORT Uruguay).
+                                Gestión de observatorio: usuarios, equipos, préstamos, observaciones e IA con Gemini.
+                            </p>
+                            <p class="gh-readme-stack">
+                                <strong>Stack:</strong> ASP.NET Core 10 · EF Core · SQL Server · JWT · Swagger · Gemini
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Final CTA ───────────────────────────────────────────── -->
+<section class="cta-section">
+    <div class="cta-panel reveal">
+        <h2>¿Listo para mirar al cielo con orden?</h2>
+        <p>
+            Entrá con tu usuario del observatorio para gestionar equipos,
+            préstamos y observaciones.
+        </p>
+        <div class="cta-actions">
+            <a class="btn-sm-primary btn-lg" asp-controller="Usuario" asp-action="Login">
+                Ir al login
+            </a>
+            <a class="btn-sm-outline btn-lg" href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">
+                Abrir repositorio
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="landing-footer">
+    <div>
+        <strong style="color: var(--sm-text);">StellarMinds</strong>
+        &nbsp;·&nbsp; Sistema de gestión de equipos astronómicos
+        &nbsp;·&nbsp; © 2026 Leandro Martínez — ORT Uruguay
+    </div>
+    <div class="mt-2">
+        <a asp-controller="Usuario" asp-action="Login">Iniciar sesión</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/leandmartine/StellarMinds" target="_blank" rel="noopener noreferrer">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="#proyecto">Proyecto</a>
+    </div>
+</footer>

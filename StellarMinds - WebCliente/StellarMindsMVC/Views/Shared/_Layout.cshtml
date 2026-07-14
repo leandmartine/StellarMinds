@@ -4,16 +4,27 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - StellarMinds</title>
+    <link rel="icon" href="~/img/favicon.svg" type="image/svg+xml" asp-append-version="true"/>
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" asp-append-version="true"/>
+    <link rel="apple-touch-icon" href="~/img/apple-touch-icon.png" asp-append-version="true"/>
     <script type="importmap"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/StellarMindsMVC.styles.css" asp-append-version="true"/>
 </head>
-<body>
+<body class="app-body">
+<div class="app-stars" aria-hidden="true"></div>
+<div class="app-shell">
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark app-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">StellarMinds</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="@(Context.Session.GetString("NombreUsuario") != null ? "Index" : "Landing")">
+                <span class="brand-orb" aria-hidden="true"></span>
+                StellarMinds
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -142,7 +153,7 @@
                             </span>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-link text-light fw-bold">
+                            <span class="nav-link fw-bold" style="cursor: default;">
                                 @Context.Session.GetString("NombreUsuario")
                             </span>
                         </li>
@@ -155,16 +166,11 @@
                 }
                 else
                 {
-                    @* Sin sesion: accesos de login y registro *@
-                    <ul class="navbar-nav ms-auto gap-2">
+                    @* Sin sesion: acceso de login *@
+                    <ul class="navbar-nav ms-auto gap-2 align-items-center">
                         <li class="nav-item">
                             <a class="btn btn-outline-light btn-sm" asp-controller="Usuario" asp-action="Login">
                                 Iniciar sesion
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-sm" asp-controller="Usuario" asp-action="Create">
-                                Registrarse
                             </a>
                         </li>
                     </ul>
@@ -174,7 +180,7 @@
     </nav>
 </header>
 
-<div class="container">
+<div class="container app-main">
     @* Alertas globales provenientes de TempData (errores y confirmaciones de controladores) *@
     @if (TempData["Error"] != null)
     {
@@ -196,11 +202,13 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted py-2 bg-light">
+<footer class="app-footer">
     <div class="container text-center small">
-        StellarMinds &copy; 2026 — Sistema de gestion de equipos astronomicos
+        <strong style="color: var(--sm-text);">StellarMinds</strong>
+        &copy; 2026 — Sistema de gestion de equipos astronomicos
     </div>
 </footer>
+</div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

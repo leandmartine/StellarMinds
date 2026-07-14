@@ -6,10 +6,14 @@
     ViewData["Title"] = "Mis observaciones";
 }
 
-<h1>Mis observaciones</h1>
-<p class="text-muted">Observaciones que registraste como socio.</p>
+<div class="sm-page-header">
+    <h1>Mis observaciones</h1>
+    <p class="text-muted">Observaciones que registraste como socio.</p>
+</div>
 
-<a asp-action="Create" class="btn btn-primary mb-3">Nueva observación</a>
+<div class="sm-page-actions">
+    <a asp-action="Create" class="btn btn-primary">Nueva observación</a>
+</div>
 
 @if (ViewBag.Error != null)
 {
@@ -22,33 +26,35 @@
 }
 else
 {
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Fecha</th>
-                <th>Objeto celeste</th>
-                <th>Tipo</th>
-                <th>Indicador</th>
-                <th>Detalle</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (StellarMindsMVC.Models.ObservacionModel item in Model)
-            {
-                string badgeClass = item.Indicador switch
-                {
-                    StellarMindsMVC.Models.IndicadorAdecuacion.IDEAL    => "bg-success",
-                    StellarMindsMVC.Models.IndicadorAdecuacion.ADECUADO => "bg-warning text-dark",
-                    _                                                   => "bg-danger"
-                };
+    <div class="sm-table-wrap">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
-                    <td>@item.ObjetoNombre</td>
-                    <td>@item.TipoObservacion</td>
-                    <td><span class="badge @badgeClass">@item.Indicador</span></td>
-                    <td>@item.Detalle</td>
+                    <th>Fecha</th>
+                    <th>Objeto celeste</th>
+                    <th>Tipo</th>
+                    <th>Indicador</th>
+                    <th>Detalle</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (StellarMindsMVC.Models.ObservacionModel item in Model)
+                {
+                    string badgeClass = item.Indicador switch
+                    {
+                        StellarMindsMVC.Models.IndicadorAdecuacion.IDEAL    => "bg-success",
+                        StellarMindsMVC.Models.IndicadorAdecuacion.ADECUADO => "bg-warning text-dark",
+                        _                                                   => "bg-danger"
+                    };
+                    <tr>
+                        <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+                        <td>@item.ObjetoNombre</td>
+                        <td>@item.TipoObservacion</td>
+                        <td><span class="badge @badgeClass">@item.Indicador</span></td>
+                        <td>@item.Detalle</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
