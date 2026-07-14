@@ -4,8 +4,10 @@
     ViewData["Title"] = "Nueva observación";
 }
 
-<h1>Registrar observación</h1>
-<hr />
+<div class="sm-page-header">
+    <h1>Registrar observación</h1>
+    <p class="text-muted">Vinculá un préstamo activo con un objeto celeste y evaluá la adecuación del equipo.</p>
+</div>
 
 @if (ViewBag.Exito != null)
 {
@@ -30,81 +32,83 @@
 }
 
 <div class="row">
-    <div class="col-md-7">
-        <form asp-action="Create" method="post" id="formObservacion">
+    <div class="col-lg-8">
+        <div class="sm-card">
+            <form asp-action="Create" method="post" id="formObservacion">
 
-            <div class="mb-3">
-                <label asp-for="PrestamoId" class="form-label"></label>
-                @if (!Model.Prestamos.Any())
-                {
-                    <div class="alert alert-warning">No tienes préstamos activos. Necesitas un préstamo activo para registrar una observación.</div>
-                }
-                else
-                {
-                    <select asp-for="PrestamoId" asp-items="Model.Prestamos" class="form-select">
-                        <option value="">-- Seleccione un préstamo --</option>
-                    </select>
-                    <span asp-validation-for="PrestamoId" class="text-danger"></span>
-                }
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="ObjetoId" class="form-label"></label>
-                <select asp-for="ObjetoId" asp-items="Model.ObjetosCelestes" class="form-select">
-                    <option value="">-- Seleccione un objeto celeste --</option>
-                </select>
-                <span asp-validation-for="ObjetoId" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="TipoObservacion" class="form-label"></label>
-                <select asp-for="TipoObservacion" asp-items="Html.GetEnumSelectList<StellarMindsMVC.Models.TipoObservacion>()" class="form-select"></select>
-                <span asp-validation-for="TipoObservacion" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Fecha" class="form-label"></label>
-                <input asp-for="Fecha" type="date" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <button type="submit"
-                        formaction="@Url.Action("Evaluar", "Observacion")"
-                        class="btn btn-outline-secondary">
-                    Evaluar adecuacion del equipo
-                </button>
-            </div>
-
-            @if (Model.IndicadorResultado != null)
-            {
-                string badgeClass = Model.IndicadorResultado switch
-                {
-                    "IDEAL"    => "bg-success",
-                    "ADECUADO" => "bg-warning text-dark",
-                    _          => "bg-danger"
-                };
                 <div class="mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="card-title">Resultado de evaluación</h6>
-                            <p class="mb-1"><strong>Indicador:</strong> <span class="badge @badgeClass">@Model.IndicadorResultado</span></p>
-                            <p class="mb-0"><strong>Detalle:</strong> @(string.IsNullOrWhiteSpace(Model.DetalleResultado) ? "El equipo es ideal para esta observación, sin observaciones adicionales." : Model.DetalleResultado)</p>
+                    <label asp-for="PrestamoId" class="form-label"></label>
+                    @if (!Model.Prestamos.Any())
+                    {
+                        <div class="alert alert-warning mb-0">No tienes préstamos activos. Necesitas un préstamo activo para registrar una observación.</div>
+                    }
+                    else
+                    {
+                        <select asp-for="PrestamoId" asp-items="Model.Prestamos" class="form-select">
+                            <option value="">-- Seleccione un préstamo --</option>
+                        </select>
+                        <span asp-validation-for="PrestamoId" class="text-danger"></span>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ObjetoId" class="form-label"></label>
+                    <select asp-for="ObjetoId" asp-items="Model.ObjetosCelestes" class="form-select">
+                        <option value="">-- Seleccione un objeto celeste --</option>
+                    </select>
+                    <span asp-validation-for="ObjetoId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TipoObservacion" class="form-label"></label>
+                    <select asp-for="TipoObservacion" asp-items="Html.GetEnumSelectList<StellarMindsMVC.Models.TipoObservacion>()" class="form-select"></select>
+                    <span asp-validation-for="TipoObservacion" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Fecha" class="form-label"></label>
+                    <input asp-for="Fecha" type="date" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit"
+                            formaction="@Url.Action("Evaluar", "Observacion")"
+                            class="btn btn-outline-secondary">
+                        Evaluar adecuacion del equipo
+                    </button>
+                </div>
+
+                @if (Model.IndicadorResultado != null)
+                {
+                    string badgeClass = Model.IndicadorResultado switch
+                    {
+                        "IDEAL"    => "bg-success",
+                        "ADECUADO" => "bg-warning text-dark",
+                        _          => "bg-danger"
+                    };
+                    <div class="mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Resultado de evaluación</h6>
+                                <p class="mb-1"><strong>Indicador:</strong> <span class="badge @badgeClass">@Model.IndicadorResultado</span></p>
+                                <p class="mb-0"><strong>Detalle:</strong> @(string.IsNullOrWhiteSpace(Model.DetalleResultado) ? "El equipo es ideal para esta observación, sin observaciones adicionales." : Model.DetalleResultado)</p>
+                            </div>
                         </div>
                     </div>
+                }
+
+                <input type="hidden" asp-for="IndicadorResultado" />
+                <input type="hidden" asp-for="DetalleResultado" />
+
+                <div class="mt-3 d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn btn-primary" @(Model.Prestamos.Any() ? "" : "disabled")>
+                        Guardar observación
+                    </button>
+                    <a asp-action="Create" class="btn btn-secondary">Cancelar</a>
                 </div>
-            }
-
-            <input type="hidden" asp-for="IndicadorResultado" />
-            <input type="hidden" asp-for="DetalleResultado" />
-
-            <div class="mt-3">
-                <button type="submit" class="btn btn-primary" @(Model.Prestamos.Any() ? "" : "disabled")>
-                    Guardar observación
-                </button>
-                <a asp-action="Create" class="btn btn-secondary ms-2">Cancelar</a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 

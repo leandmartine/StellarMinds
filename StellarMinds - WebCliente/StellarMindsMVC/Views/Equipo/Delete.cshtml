@@ -4,8 +4,10 @@
     ViewData["Title"] = "Eliminar equipo";
 }
 
-<h1>Eliminar equipo</h1>
-<hr />
+<div class="sm-page-header">
+    <h1>Eliminar equipo</h1>
+    <p class="text-muted">Confirmá la baja del equipo del inventario.</p>
+</div>
 
 @if (ViewBag.Error != null)
 {
@@ -31,26 +33,28 @@
     </div>
 }
 
-<p>Confirma la eliminacion del siguiente equipo:</p>
+<div class="sm-card">
+    <p class="text-muted mb-3">Confirma la eliminacion del siguiente equipo:</p>
 
-<dl class="row">
-    <dt class="col-sm-3">Id</dt>
-    <dd class="col-sm-9">@Model.Id</dd>
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Id</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
 
-    <dt class="col-sm-3">Tipo</dt>
-    <dd class="col-sm-9">@Model.TipoEquipo</dd>
+        <dt class="col-sm-3">Tipo</dt>
+        <dd class="col-sm-9">@Model.TipoEquipo</dd>
 
-    <dt class="col-sm-3">Marca</dt>
-    <dd class="col-sm-9">@Model.Marca</dd>
+        <dt class="col-sm-3">Marca</dt>
+        <dd class="col-sm-9">@Model.Marca</dd>
 
-    <dt class="col-sm-3">Modelo</dt>
-    <dd class="col-sm-9">@Model.Modelo</dd>
+        <dt class="col-sm-3">Modelo</dt>
+        <dd class="col-sm-9">@Model.Modelo</dd>
 
-    <dt class="col-sm-3">Stock</dt>
-    <dd class="col-sm-9">@Model.Stock</dd>
-</dl>
+        <dt class="col-sm-3">Stock</dt>
+        <dd class="col-sm-9">@Model.Stock</dd>
+    </dl>
+</div>
 
-<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex flex-wrap gap-2">
     <button type="submit" class="btn btn-danger">Confirmar eliminacion</button>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>

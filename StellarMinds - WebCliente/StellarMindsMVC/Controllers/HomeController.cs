@@ -7,6 +7,11 @@ namespace StellarMindsMVC.Controllers;
 
 public class HomeController : Controller
 {
+    /// <summary>
+    /// Landing pública del proyecto (sin autenticación).
+    /// </summary>
+    public IActionResult Landing() => View();
+
     [Autorizacion]
     public IActionResult Index() => View();
 
